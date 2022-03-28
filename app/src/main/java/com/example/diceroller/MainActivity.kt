@@ -12,15 +12,16 @@ import android.widget.TextView
  */
 class MainActivity : AppCompatActivity() {
 
+    private val rollButton: Button by lazy { findViewById(R.id.button) }
+    private val diceImage: ImageView by lazy { findViewById(R.id.imageView) }
+    private val diceImage2: ImageView by lazy { findViewById(R.id.imageView2) }
+
     /**
      * This method is called when the Activity is created.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        // Find the Button in the layout
-        val rollButton: Button = findViewById(R.id.button)
 
         // Set a click listener on the button to roll the dice when the user taps the button
         rollButton.setOnClickListener { rollDice() }
@@ -37,10 +38,6 @@ class MainActivity : AppCompatActivity() {
         val dice2 = Dice(6)
         val diceRoll = dice.roll()
         val diceRoll2 = dice2.roll()
-
-        // Update the screen with the dice roll
-        val diceImage: ImageView = findViewById(R.id.imageView)
-        val diceImage2: ImageView = findViewById(R.id.imageView2)
 
         // Determine which drawable resource ID to use based on the dice roll
         val drawableResource = when (diceRoll){
